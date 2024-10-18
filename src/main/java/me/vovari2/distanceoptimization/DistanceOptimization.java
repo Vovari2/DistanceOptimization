@@ -1,10 +1,7 @@
 package me.vovari2.distanceoptimization;
 
 import me.vovari2.distanceoptimization.exceptions.ComponentException;
-import me.vovari2.distanceoptimization.managers.CommandManager;
-import me.vovari2.distanceoptimization.managers.ListenerManager;
-import me.vovari2.distanceoptimization.managers.TickManager;
-import me.vovari2.distanceoptimization.managers.WorldManager;
+import me.vovari2.distanceoptimization.managers.*;
 import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.World;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -41,6 +38,7 @@ public final class DistanceOptimization extends JavaPlugin {
 
             CommandManager.initialize(this);
 
+            ChunkManager.initialize(this);
             TickManager.initialize(this);
         }
 

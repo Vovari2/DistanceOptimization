@@ -2,6 +2,7 @@ package me.vovari2.distanceoptimization.listeners;
 
 import me.vovari2.distanceoptimization.Config;
 import me.vovari2.distanceoptimization.DistanceOptimization;
+import me.vovari2.distanceoptimization.managers.ChunkManager;
 import org.bukkit.Material;
 import org.bukkit.Statistic;
 import org.bukkit.World;
@@ -30,11 +31,14 @@ public class PlayerListener implements Listener {
 
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent event) {
-        if (!equalsWorld(event.getTo().getWorld())
+        if (!world.equals(event.getTo().getWorld())
                 || !event.hasChangedBlock())
             return;
 
         Player player = event.getPlayer();
+        if (!ChunkManager.get(player))
+            return;
+
         long statisticValue = getStatisticOfPlayer(player);
         if (!lastPlayersMovementOnFlying.containsKey(player)){
             lastPlayersMovementOnFlying.put(player, statisticValue);
@@ -72,9 +76,6 @@ public class PlayerListener implements Listener {
         player.setSimulationDistance(world.getSimulationDistance());
     }
 
-    private boolean equalsWorld(World world){
-        return world.equals(this.world);
-    }
     private long getStatisticOfPlayer(Player player){
         return player.getStatistic(Statistic.AVIATE_ONE_CM);
     }

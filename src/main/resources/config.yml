@@ -3,6 +3,9 @@ enabled: true
 optimization_enable_limit: 50
 optimization_disable_limit: 30
 
+score_chunks_enable_limit: 50
+score_chunks_disable_limit: 30
+
 
 worlds:
   - "world"

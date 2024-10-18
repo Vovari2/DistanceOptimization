@@ -2,6 +2,7 @@ package me.vovari2.distanceoptimization.managers;
 
 import me.vovari2.distanceoptimization.Config;
 import me.vovari2.distanceoptimization.DistanceOptimization;
+import me.vovari2.distanceoptimization.listeners.ChunkListener;
 import me.vovari2.distanceoptimization.listeners.PlayerListener;
 import org.bukkit.World;
 import org.bukkit.event.HandlerList;
@@ -17,6 +18,7 @@ public class ListenerManager {
         worldListeners = new HashMap<>();
         for (World world : Config.WORLDS){
             List<Listener> listeners = new LinkedList<>();
+            listeners.add(new ChunkListener(instance, world));
             listeners.add(new PlayerListener(instance, world));
             worldListeners.put(world.getName(), listeners);
         }

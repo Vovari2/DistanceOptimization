@@ -13,6 +13,9 @@ public class Config {
     public static int OPTIMIZATION_ENABLE_LIMIT;
     public static int OPTIMIZATION_DISABLE_LIMIT;
 
+    public static int SCORE_CHUNKS_ENABLE_LIMIT;
+    public static int SCORE_CHUNKS_DISABLE_LIMIT;
+
     public static List<World> WORLDS;
 
     public static boolean USE_DEFAULT_DISTANCE;
@@ -36,6 +39,9 @@ public class Config {
         ENABLED = getBoolean("enabled");
         OPTIMIZATION_ENABLE_LIMIT = getPositiveInt("optimization_enable_limit");
         OPTIMIZATION_DISABLE_LIMIT = getPositiveInt("optimization_disable_limit");
+
+        SCORE_CHUNKS_ENABLE_LIMIT = getPositiveInt("score_chunks_enable_limit");
+        SCORE_CHUNKS_DISABLE_LIMIT = getPositiveInt("score_chunks_disable_limit");
 
         WORLDS =  getWorldList("worlds");
 
