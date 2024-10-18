@@ -1,0 +1,18 @@
+enabled: true
+
+optimization_enable_limit: 50
+optimization_disable_limit: 30
+
+
+worlds:
+  - "world"
+
+use_default_distance: false
+world_view_distance: 12
+world_send_view_distance: 12
+world_simulation_distance: 12
+
+
+optimize_view_distance: 4
+optimize_send_view_distance: 4
+optimize_simulation_distance: 4
