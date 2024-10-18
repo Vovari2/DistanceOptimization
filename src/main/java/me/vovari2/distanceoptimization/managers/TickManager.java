@@ -1,39 +1,23 @@
 package me.vovari2.distanceoptimization.managers;
 
+import me.vovari2.distanceoptimization.Config;
+import me.vovari2.distanceoptimization.DistanceOptimization;
+import org.bukkit.scheduler.BukkitRunnable;
+
 import java.util.ArrayDeque;
 import java.util.Deque;
 
 public class TickManager {
-    private static Deque<Long> mspts;
-    private static Deque<Long> tpss;
-    private static long lastNanosecond;
+    public static void initialize(DistanceOptimization instance){
+        new BukkitRunnable(){
+            @Override
+            public void run() {
+                if (!instance.IS_BAD_MSPT && Config.OPTIMIZATION_ENABLE_LIMIT < instance.getServer().getAverageTickTime()){
+                    instance.IS_BAD_MSPT = true; return; }
 
-    public static void initialize(){
-        mspts = new ArrayDeque<>();
-        if ()
-
+                if (instance.IS_BAD_MSPT && Config.OPTIMIZATION_DISABLE_LIMIT > instance.getServer().getAverageTickTime()){
+                    instance.IS_BAD_MSPT = false; return; }
+            }
+        }.runTaskTimer(instance, 0, 20);
     }
-
-    public static void startTick(){
-        lastNanosecond = System.nanoTime();
-    }
-    public static void endTick(){
-        mspts.addLast(System.nanoTime() - lastNanosecond);
-        if (mspts.size() >= 11)
-            mspts.removeFirst();
-    }
-    public static double getTPS(){
-        long sum = 0;
-        for (long ns : mspts)
-            sum += ns;
-        return sum / 20000000D;
-    }
-    public static double getMSPT(){
-        long sum = 0;
-        for (long ns : tpss)
-            sum += ns;
-        return sum / 10000000D;
-    }
-
-
 }

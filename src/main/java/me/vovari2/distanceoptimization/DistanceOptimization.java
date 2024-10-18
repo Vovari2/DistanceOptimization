@@ -3,6 +3,7 @@ package me.vovari2.distanceoptimization;
 import me.vovari2.distanceoptimization.exceptions.ComponentException;
 import me.vovari2.distanceoptimization.managers.CommandManager;
 import me.vovari2.distanceoptimization.managers.ListenerManager;
+import me.vovari2.distanceoptimization.managers.TickManager;
 import me.vovari2.distanceoptimization.managers.WorldManager;
 import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.World;
@@ -39,6 +40,8 @@ public final class DistanceOptimization extends JavaPlugin {
             ListenerManager.launch(this);
 
             CommandManager.initialize(this);
+
+            TickManager.initialize(this);
         }
 
         Text.sendMessageToConsole(isEnable ? "<green>Plugin enabled!" : "<yellow>Plugin not enabled!");
