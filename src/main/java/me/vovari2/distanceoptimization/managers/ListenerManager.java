@@ -18,7 +18,7 @@ public class ListenerManager {
         worldListeners = new HashMap<>();
         for (World world : Config.WORLDS){
             List<Listener> listeners = new LinkedList<>();
-            listeners.add(new ChunkListener(instance, world));
+            listeners.add(new ChunkListener(world));
             listeners.add(new PlayerListener(instance, world));
             worldListeners.put(world.getName(), listeners);
         }

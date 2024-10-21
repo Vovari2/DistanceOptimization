@@ -1,7 +1,5 @@
 package me.vovari2.distanceoptimization.listeners;
 
-import me.vovari2.distanceoptimization.DistanceOptimization;
-import me.vovari2.distanceoptimization.Text;
 import me.vovari2.distanceoptimization.managers.ChunkManager;
 import org.bukkit.Chunk;
 import org.bukkit.World;
@@ -11,11 +9,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.world.ChunkLoadEvent;
 
 public class ChunkListener implements Listener {
-
-    private final DistanceOptimization instance;
     private final World world;
-    public ChunkListener(DistanceOptimization instance, World world){
-        this.instance = instance;
+    public ChunkListener(World world){
         this.world = world;
     }
 

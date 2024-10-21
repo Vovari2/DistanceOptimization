@@ -1,6 +1,6 @@
 name: DistanceOptimization
 author: Vovari2
-version: '1.0'
+version: '2.0.0'
 main: me.vovari2.distanceoptimization.DistanceOptimization
 api-version: '1.21'
 
@@ -16,10 +16,6 @@ permissions:
   distance_optimization.help:
     description: "Permission to use the help command (/do help)"
     default: false
-    children:
-      distance_optimization.commands: true
   distance_optimization.reload:
     description: "Permission to use the reload command (/do reload)"
     default: false
-    children:
-      distance_optimization.commands: true
