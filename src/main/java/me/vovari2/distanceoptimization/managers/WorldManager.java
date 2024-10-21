@@ -9,9 +9,9 @@ public class WorldManager {
             return;
 
         for (World world : Config.WORLDS){
-            world.setViewDistance(Config.WORLD_VIEW_DISTANCE);
-            world.setSendViewDistance(Config.WORLD_SEND_VIEW_DISTANCE);
-            world.setSimulationDistance(Config.WORLD_SIMULATION_DISTANCE);
+            world.setViewDistance(Config.NORMAL_VIEW_DISTANCE);
+            world.setSendViewDistance(Config.NORMAL_SEND_VIEW_DISTANCE);
+            world.setSimulationDistance(Config.NORMAL_SIMULATION_DISTANCE);
         }
     }
 }

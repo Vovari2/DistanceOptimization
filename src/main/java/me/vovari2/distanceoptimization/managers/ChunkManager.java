@@ -1,23 +1,18 @@
 package me.vovari2.distanceoptimization.managers;
 
 import me.vovari2.distanceoptimization.Config;
-import me.vovari2.distanceoptimization.DistanceOptimization;
 import org.bukkit.entity.Player;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 public class ChunkManager {
-    public static void initialize(DistanceOptimization instance){
+    public static void initialize(){
         playerScores = new HashMap<>();
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                for (PlayerScore playerScore : playerScores.values())
-                    playerScore.update();
-                playerScores.clear();
-            }
-        }.runTaskTimer(instance, 0, 20);
+    }
+    public static void shutdown(){
+        playerScores.clear();
     }
 
     private static HashMap<Player, PlayerScore> playerScores;
@@ -26,26 +21,54 @@ public class ChunkManager {
             playerScores.get(player).add(value);
         else playerScores.put(player, new PlayerScore(value));
     }
-    public static boolean get(Player player){
+    public static void update(){
+        for (PlayerScore playerScore : playerScores.values())
+            playerScore.update();
+    }
+    public static boolean getScore(Player player){
         return playerScores.containsKey(player) && playerScores.get(player).isEnableOptimization;
     }
 
-    public static class PlayerScore{
+    private static final double AMOUNT_VALUES_FOR_AVERAGE = 10; // Number of last point values to calculate the average
+    private static class PlayerScore{
         private boolean isEnableOptimization;
-        private int score;
+        private final List<ExtendedInteger> scores;
         public PlayerScore(int value){
             isEnableOptimization = false;
-            this.score = value;
+            scores = new LinkedList<>();
+            scores.addLast(new ExtendedInteger(value));
         }
         public void add(int value){
-            score += value;
+            scores.getLast().add(value);
+        }
+        private void next(){
+            scores.addLast(new ExtendedInteger(0));
+            if (scores.size() > AMOUNT_VALUES_FOR_AVERAGE)
+                scores.removeFirst();
+        }
+        private double get(){
+            int sum = 0;
+            for (ExtendedInteger value : scores)
+                sum += value.value;
+            return sum / AMOUNT_VALUES_FOR_AVERAGE;
         }
         public void update(){
-            if (!isEnableOptimization && Config.SCORE_CHUNKS_ENABLE_LIMIT < score){
+            if (!isEnableOptimization && Config.CHUNKS_LIMIT_ENABLE < get()){
                 isEnableOptimization = true; return; }
 
-            if (isEnableOptimization && Config.SCORE_CHUNKS_DISABLE_LIMIT > score){
+            if (isEnableOptimization && Config.CHUNKS_LIMIT_DISABLE > get()){
                 isEnableOptimization = false; return; }
+
+            next();
+        }
+    }
+    private static class ExtendedInteger{
+        private Integer value;
+        public ExtendedInteger(int value){
+            this.value = value;
+        }
+        public void add(int value){
+            this.value += value;
         }
     }
 }

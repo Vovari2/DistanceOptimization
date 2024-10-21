@@ -10,18 +10,18 @@ import java.util.List;
 
 public class Config {
     public static boolean ENABLED;
-    public static int OPTIMIZATION_ENABLE_LIMIT;
-    public static int OPTIMIZATION_DISABLE_LIMIT;
+    public static int MSPT_LIMIT_ENABLE;
+    public static int MSPT_LIMIT_DISABLE;
 
-    public static int SCORE_CHUNKS_ENABLE_LIMIT;
-    public static int SCORE_CHUNKS_DISABLE_LIMIT;
+    public static int CHUNKS_LIMIT_ENABLE;
+    public static int CHUNKS_LIMIT_DISABLE;
 
     public static List<World> WORLDS;
 
     public static boolean USE_DEFAULT_DISTANCE;
-    public static int WORLD_VIEW_DISTANCE;
-    public static int WORLD_SEND_VIEW_DISTANCE;
-    public static int WORLD_SIMULATION_DISTANCE;
+    public static int NORMAL_VIEW_DISTANCE;
+    public static int NORMAL_SEND_VIEW_DISTANCE;
+    public static int NORMAL_SIMULATION_DISTANCE;
 
     public static int OPTIMIZE_VIEW_DISTANCE;
     public static int OPTIMIZE_SEND_VIEW_DISTANCE;
@@ -37,18 +37,18 @@ public class Config {
         config = FileUtils.getYamlConfiguration("config.yml");
 
         ENABLED = getBoolean("enabled");
-        OPTIMIZATION_ENABLE_LIMIT = getPositiveInt("optimization_enable_limit");
-        OPTIMIZATION_DISABLE_LIMIT = getPositiveInt("optimization_disable_limit");
+        MSPT_LIMIT_ENABLE = getPositiveInt("mspt_limit_enable");
+        MSPT_LIMIT_DISABLE = getPositiveInt("mspt_limit_disable");
 
-        SCORE_CHUNKS_ENABLE_LIMIT = getPositiveInt("score_chunks_enable_limit");
-        SCORE_CHUNKS_DISABLE_LIMIT = getPositiveInt("score_chunks_disable_limit");
+        CHUNKS_LIMIT_ENABLE = getPositiveInt("chunks_limit_enable");
+        CHUNKS_LIMIT_DISABLE = getPositiveInt("chunks_limit_disable");
 
         WORLDS =  getWorldList("worlds");
 
         USE_DEFAULT_DISTANCE = getBoolean("use_default_distance");
-        WORLD_VIEW_DISTANCE = getPositiveInt("world_view_distance");
-        WORLD_SEND_VIEW_DISTANCE = getPositiveInt("world_send_view_distance");
-        WORLD_SIMULATION_DISTANCE = getPositiveInt("world_simulation_distance");
+        NORMAL_VIEW_DISTANCE = getPositiveInt("normal_view_distance");
+        NORMAL_SEND_VIEW_DISTANCE = getPositiveInt("normal_send_view_distance");
+        NORMAL_SIMULATION_DISTANCE = getPositiveInt("normal_simulation_distance");
 
         OPTIMIZE_VIEW_DISTANCE = getPositiveInt("optimize_view_distance");
         OPTIMIZE_SEND_VIEW_DISTANCE = getPositiveInt("optimize_send_view_distance");

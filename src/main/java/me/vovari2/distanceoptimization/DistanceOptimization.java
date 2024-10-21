@@ -38,7 +38,7 @@ public final class DistanceOptimization extends JavaPlugin {
 
             CommandManager.initialize(this);
 
-            ChunkManager.initialize(this);
+            ChunkManager.initialize();
             TickManager.initialize(this);
         }
 
@@ -48,7 +48,10 @@ public final class DistanceOptimization extends JavaPlugin {
     @Override
     public void onDisable() {
         Text.clear();
-        ListenerManager.stop(this);
+        ListenerManager.shutdown(this);
+        ChunkManager.shutdown();
+        TickManager.shutdown();
+
         Text.sendMessageToConsole("<red>Plugin disabled!");
     }
 

@@ -2,25 +2,27 @@ package me.vovari2.distanceoptimization.managers;
 
 import me.vovari2.distanceoptimization.Config;
 import me.vovari2.distanceoptimization.DistanceOptimization;
-import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
-
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.HashMap;
+import org.bukkit.scheduler.BukkitTask;
 
 public class TickManager {
+    private static BukkitTask task;
     public static void initialize(DistanceOptimization instance){
-        new BukkitRunnable(){
+        task = new BukkitRunnable(){
             @Override
             public void run() {
                 double mspt = instance.getServer().getAverageTickTime();
-                if (!instance.IS_BAD_MSPT && Config.OPTIMIZATION_ENABLE_LIMIT < mspt){
+                if (!instance.IS_BAD_MSPT && Config.MSPT_LIMIT_ENABLE < mspt){
                     instance.IS_BAD_MSPT = true; return; }
 
-                if (instance.IS_BAD_MSPT && Config.OPTIMIZATION_DISABLE_LIMIT > mspt){
+                if (instance.IS_BAD_MSPT && Config.MSPT_LIMIT_DISABLE > mspt){
                     instance.IS_BAD_MSPT = false; return; }
+
+                ChunkManager.update();
             }
         }.runTaskTimer(instance, 0, 20);
+    }
+    public static void shutdown(){
+        task.cancel();
     }
 }

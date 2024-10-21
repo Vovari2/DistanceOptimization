@@ -39,7 +39,6 @@ public class ChunkListener implements Listener {
         for (Player targetPlayer : world.getPlayers()){
             int playerX = targetPlayer.getChunk().getX(), playerZ = targetPlayer.getChunk().getZ();
             double playerDistance = Math.hypot(x - playerX, z - playerZ);
-            Text.sendMessageToConsole("work 1 " + playerDistance + " " + nearDistance);
             if (nearDistance < playerDistance)
                 continue;
 

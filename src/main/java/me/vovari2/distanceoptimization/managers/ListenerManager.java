@@ -29,7 +29,8 @@ public class ListenerManager {
                 instance.getServer().getPluginManager().registerEvents(listener, instance);
         }
     }
-    public static void stop(DistanceOptimization instance){
+    public static void shutdown(DistanceOptimization instance){
         HandlerList.unregisterAll(instance);
+        worldListeners.clear();
     }
 }
