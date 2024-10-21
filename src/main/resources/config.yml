@@ -1,21 +1,34 @@
+
+# EN: Enabled the plugin (true) or not (false) (RU: Включить плагин (true) или нет (false))
 enabled: true
 
-optimization_enable_limit: 50
-optimization_disable_limit: 30
+# EN: The amount of milliseconds per tick (MSPT) (RU: Количество миллисекунд за тик (MSPT))
+#  when the server reduces rendering (RU: при котором сервер уменьшит прорисовку)
+mspt_limit_enable: 50
+#  when the server returns normal rendering (RU: при котором сервер вернёт нормальную прорисовку)
+mspt_limit_disable: 30
 
-score_chunks_enable_limit: 50
-score_chunks_disable_limit: 30
+
+# EN: Number of points for loaded chunks (old chunk gives 1 point, new chunk gives 2 points) (RU: Количество очков за прогруженные чанки (старый чанк даёт 1 очко, новый чанк даёт 2 очка))
+#  when the server reduces rendering (RU: при котором сервер уменьшит прорисовку)
+chunks_limit_enable: 50
+#  when the server returns normal rendering (RU: при котором сервер вернёт нормальную прорисовку)
+chunks_limit_disable: 30
 
 
+# EN: List of worlds the plugin will work in (RU: Список миров, в которых будет работать плагин)
 worlds:
   - "world"
 
+# EN: Use the distance from the core as the normal distance value (true-yes/ false-no) (RU: Использовать дистанцию из ядра, как нормальное значение дистанции (true-да/ false-нет))
 use_default_distance: false
-world_view_distance: 12
-world_send_view_distance: 12
-world_simulation_distance: 12
 
+# EN: Values of normal distance for different parameters (RU: Значения нормальной дистанции в разных параметрах)
+normal_view_distance: 12
+normal_send_view_distance: 12
+normal_simulation_distance: 12
 
+# EN: Values of reduced distance for different parameters (RU: Значения уменьшенной дистанции в разных параметрах)
 optimize_view_distance: 4
 optimize_send_view_distance: 4
 optimize_simulation_distance: 4
