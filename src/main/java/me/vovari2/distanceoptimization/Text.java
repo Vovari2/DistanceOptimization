@@ -27,9 +27,14 @@ public class Text {
                 <gradient:#526D82:#9DB2BF> - <hover:show_text:"<gray>Reload plugin">/cho reload</hover></gradient>
                 """.formatted(PLUGIN_NAME, VERSION)));
         texts.put("command.reload", toComponent("<gradient:#54B435:#82CD47>Plugin reloaded!</gradient>"));
+        texts.put("command.profiler_start", toComponent("<green>Profiler for <%player%> started!"));
+        texts.put("command.profiler_stop", toComponent("<green>Confirm <click:suggest_command:/do confirm><gray>/do confirm</gray></click> to stop profiler"));
+        texts.put("command.confirm", toComponent("<yellow>Profiler stopped!"));
         texts.put("warning.command_incorrectly", toComponent("<red>Command is incorrectly! (/cho help)"));
         texts.put("warning.dont_have_permission", toComponent("<red>You don't have permissions!"));
         texts.put("warning.you_not_player", toComponent("<red>You are not a player!"));
+        texts.put("warning.player_name_incorrectly", toComponent("<red>Player's name is incorrectly!"));
+        texts.put("warning.nothing_to_confirm", toComponent("<red>Nothing to confirm!"));
         Text.object = texts;
     }
     public static Component toComponent(String text){

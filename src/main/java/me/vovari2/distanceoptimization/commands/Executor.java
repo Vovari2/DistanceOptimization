@@ -3,6 +3,7 @@ package me.vovari2.distanceoptimization.commands;
 import me.vovari2.distanceoptimization.DistanceOptimization;
 import me.vovari2.distanceoptimization.Text;
 import me.vovari2.distanceoptimization.commands.commands.HelpCommand;
+import me.vovari2.distanceoptimization.commands.commands.ProfilerCommand;
 import me.vovari2.distanceoptimization.commands.commands.ReloadCommand;
 import me.vovari2.distanceoptimization.exceptions.ComponentException;
 import org.bukkit.command.CommandExecutor;
@@ -22,6 +23,7 @@ public class Executor implements CommandExecutor {
         commands = new HashMap<>();
         commands.put("help", HelpCommand.class);
         commands.put("reload", ReloadCommand.class);
+        commands.put("profiler", ProfilerCommand.class);
     }
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull org.bukkit.command.Command commandObject, @NotNull String label, @NotNull String[] args) {

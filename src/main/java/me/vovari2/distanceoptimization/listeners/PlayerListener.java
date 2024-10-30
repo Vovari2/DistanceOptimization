@@ -25,7 +25,7 @@ public class PlayerListener implements Listener {
             return;
 
         Player player = event.getPlayer();
-        if (instance.IS_BAD_MSPT && ChunkManager.getScore(player))
+        if (instance.IS_BAD_MSPT && ChunkManager.canGetScore(player))
             setOptimizeDistance(player);
         else setNormalDistance(player);
     }

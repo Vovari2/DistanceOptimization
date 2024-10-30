@@ -25,11 +25,15 @@ public class ChunkManager {
         for (PlayerScore playerScore : playerScores.values())
             playerScore.update();
     }
-    public static boolean getScore(Player player){
+    public static boolean canGetScore(Player player){
         return playerScores.containsKey(player) && playerScores.get(player).isEnableOptimization;
     }
+    public static String getStringScore(Player profilingPlayer){
+        PlayerScore playerScore = playerScores.get(profilingPlayer);
+        return " <gray>Info (%s): <gold>%s".formatted(playerScore.isEnableOptimization ? "<green>true</green>" : "<red>false</red>", playerScore.get());
+    }
 
-    private static final double AMOUNT_VALUES_FOR_AVERAGE = 10; // Number of last point values to calculate the average
+    private static final double AMOUNT_VALUES_FOR_AVERAGE = 20; // Number of last point values to calculate the average
     private static class PlayerScore{
         private boolean isEnableOptimization;
         private final List<ExtendedInteger> scores;

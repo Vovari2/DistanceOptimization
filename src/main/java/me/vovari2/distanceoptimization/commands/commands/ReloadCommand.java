@@ -16,7 +16,7 @@ public class ReloadCommand extends Command {
         if (!sender.hasPermission("distance_optimization.reload"))
             throw new ComponentException(Text.get("warning.dont_have_permission"));
 
-        if (args.length > 1)
+        if (args.length != 1)
             throw new ComponentException(Text.get("warning.command_incorrectly"));
 
         plugin.onDisable();

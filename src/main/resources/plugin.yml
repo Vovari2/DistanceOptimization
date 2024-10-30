@@ -19,3 +19,6 @@ permissions:
   distance_optimization.reload:
     description: "Permission to use the reload command (/do reload)"
     default: false
+  distance_optimization.profiler:
+    description: "Permission to use the profiler command (/do profiler)"
+    default: false

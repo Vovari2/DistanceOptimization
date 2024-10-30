@@ -4,6 +4,7 @@ import me.vovari2.distanceoptimization.exceptions.ComponentException;
 import me.vovari2.distanceoptimization.managers.*;
 import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.World;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class DistanceOptimization extends JavaPlugin {
@@ -64,5 +65,11 @@ public final class DistanceOptimization extends JavaPlugin {
 
     public static World getWorld(String world){
         return instance.getServer().getWorld(world);
+    }
+    public static Player getPlayer(String player){
+        for (Player targetPlayer : instance.getServer().getOnlinePlayers())
+            if (targetPlayer.getName().equals(player))
+                return targetPlayer;
+        return null;
     }
 }
