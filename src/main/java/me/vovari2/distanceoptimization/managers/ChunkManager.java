@@ -31,6 +31,8 @@ public class ChunkManager {
     }
     public static String getStringScore(Player profilingPlayer){
         PlayerScore playerScore = playerScores.get(profilingPlayer);
+        if (playerScore == null)
+            return " <gray>Info (%s/%s): <gold>%s".formatted("<red>false</red>", DistanceOptimization.getInstance().IS_BAD_MSPT ? "<green>true</green>" : "<red>false</red>", 0);
         return " <gray>Info (%s/%s): <gold>%s".formatted(playerScore.isEnableOptimization ? "<green>true</green>" : "<red>false</red>", DistanceOptimization.getInstance().IS_BAD_MSPT ? "<green>true</green>" : "<red>false</red>", playerScore.get());
     }
 

@@ -18,11 +18,6 @@ public class Config {
 
     public static List<World> WORLDS;
 
-    public static boolean USE_DEFAULT_DISTANCE;
-    public static int NORMAL_VIEW_DISTANCE;
-    public static int NORMAL_SEND_VIEW_DISTANCE;
-    public static int NORMAL_SIMULATION_DISTANCE;
-
     public static int OPTIMIZE_VIEW_DISTANCE;
     public static int OPTIMIZE_SEND_VIEW_DISTANCE;
     public static int OPTIMIZE_SIMULATION_DISTANCE;
@@ -44,11 +39,6 @@ public class Config {
         CHUNKS_LIMIT_DISABLE = getPositiveInt("chunks_limit_disable");
 
         WORLDS =  getWorldList("worlds");
-
-        USE_DEFAULT_DISTANCE = getBoolean("use_default_distance");
-        NORMAL_VIEW_DISTANCE = getPositiveInt("normal_view_distance");
-        NORMAL_SEND_VIEW_DISTANCE = getPositiveInt("normal_send_view_distance");
-        NORMAL_SIMULATION_DISTANCE = getPositiveInt("normal_simulation_distance");
 
         OPTIMIZE_VIEW_DISTANCE = getPositiveInt("optimize_view_distance");
         OPTIMIZE_SEND_VIEW_DISTANCE = getPositiveInt("optimize_send_view_distance");

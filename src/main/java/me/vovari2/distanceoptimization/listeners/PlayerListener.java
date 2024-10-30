@@ -35,7 +35,7 @@ public class PlayerListener implements Listener {
             return;
 
         player.setViewDistance(Config.OPTIMIZE_VIEW_DISTANCE);
-        player.setSendViewDistance(Config.NORMAL_SEND_VIEW_DISTANCE);
+        player.setSendViewDistance(Config.OPTIMIZE_SEND_VIEW_DISTANCE);
         player.setSimulationDistance(Config.OPTIMIZE_SIMULATION_DISTANCE);
     }
     private void setNormalDistance(Player player){

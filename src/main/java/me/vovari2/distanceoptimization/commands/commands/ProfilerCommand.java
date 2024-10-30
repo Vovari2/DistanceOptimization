@@ -21,6 +21,9 @@ public class ProfilerCommand extends Command {
         if (!(sender instanceof Player player))
             throw new ComponentException(Text.get("warning.you_not_player"));
 
+        if (args.length < 2)
+            throw new ComponentException(Text.get("warning.command_incorrectly"));
+
         switch(args[1].toLowerCase()){
             case "start":{
                 if (args.length != 3)
@@ -30,20 +33,26 @@ public class ProfilerCommand extends Command {
                 if (targetPlayer == null)
                     throw new ComponentException(Text.get("warning.player_name_incorrectly"));
 
+                if (Profiler.isStarted())
+                    throw new ComponentException(Text.get("warning.profiler_already_started"));
+
                 Profiler.start(targetPlayer, player);
-            }
+            } break;
             case "stop": {
                 if (args.length != 2)
                     throw new ComponentException(Text.get("warning.command_incorrectly"));
 
+                if (!Profiler.isStarted())
+                    throw new ComponentException(Text.get("warning.profiler_not_started_yet"));
+
                 Profiler.stop(sender);
-            }
+            } break;
             case "confirm": {
                 if (args.length != 2)
                     throw new ComponentException(Text.get("warning.command_incorrectly"));
 
                 Profiler.confirm(sender);
-            }
+            } break;
             default: throw new ComponentException(Text.get("warning.command_incorrectly"));
         }
     }

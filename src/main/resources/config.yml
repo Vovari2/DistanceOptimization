@@ -19,14 +19,6 @@ chunks_limit_disable: 30
 worlds:
   - "world"
 
-# EN: Use the distance from the core as the normal distance value (true-yes/ false-no) (RU: Использовать дистанцию из ядра, как нормальное значение дистанции (true-да/ false-нет))
-use_default_distance: true
-
-# EN: Values of normal distance for different parameters (RU: Значения нормальной дистанции в разных параметрах)
-normal_view_distance: 12
-normal_send_view_distance: 12
-normal_simulation_distance: 12
-
 # EN: Values of reduced distance for different parameters (RU: Значения уменьшенной дистанции в разных параметрах)
 optimize_view_distance: 4
 optimize_send_view_distance: 4

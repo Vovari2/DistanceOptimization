@@ -32,7 +32,6 @@ public final class DistanceOptimization extends JavaPlugin {
         }
 
         if (isEnable){
-            WorldManager.initialize();
 
             ListenerManager.initialize(this);
             ListenerManager.launch(this);

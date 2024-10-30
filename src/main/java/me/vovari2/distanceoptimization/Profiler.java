@@ -10,8 +10,11 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 
 public class Profiler {
-    public static Profiler object = null;
+    private static Profiler object = null;
     private static boolean waitConfirmForDeletion;
+    public static boolean isStarted(){
+        return object != null;
+    }
     public static void start(Player profilingPlayer, Player listeningPlayer){
         object = new Profiler(profilingPlayer, listeningPlayer);
         listeningPlayer.sendMessage(Text.get("command.profiler_start")
@@ -32,14 +35,16 @@ public class Profiler {
         sender.sendMessage(Text.get("command.profiler_stop"));
     }
     public static void confirm(CommandSender sender) throws ComponentException{
-        if (waitConfirmForDeletion)
+        if (!waitConfirmForDeletion)
             throw new ComponentException(Text.get("warning.nothing_to_confirm"));
 
-        sender.sendMessage(Text.get("command.confirm"));
+        if (!sender.equals(object.listeningPlayer))
+            sender.sendMessage(Text.get("command.confirm"));
         object.listeningPlayer.sendMessage(Text.get("command.confirm"));
 
         object.task.cancel();
         object = null;
+        waitConfirmForDeletion = false;
     }
 
     private final Player profilingPlayer;
