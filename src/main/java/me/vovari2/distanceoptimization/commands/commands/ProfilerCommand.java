@@ -15,7 +15,7 @@ public class ProfilerCommand extends Command {
 
     @Override
     public void execute() throws ComponentException {
-        if (!sender.hasPermission("distance_optimization.help"))
+        if (!sender.hasPermission("distance_optimization.profiler"))
             throw new ComponentException(Text.get("warning.dont_have_permission"));
 
         if (!(sender instanceof Player player))
@@ -26,7 +26,7 @@ public class ProfilerCommand extends Command {
                 if (args.length != 3)
                     throw new ComponentException(Text.get("warning.command_incorrectly"));
 
-                Player targetPlayer = DistanceOptimization.getPlayer(args[2].toLowerCase());
+                Player targetPlayer = DistanceOptimization.getPlayer(args[2]);
                 if (targetPlayer == null)
                     throw new ComponentException(Text.get("warning.player_name_incorrectly"));
 

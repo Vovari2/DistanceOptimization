@@ -17,6 +17,9 @@ public class TabCompleter implements org.bukkit.command.TabCompleter {
         if (args.length == 2 && args[0].equals("profiler"))
             return List.of("start", "stop", "confirm");
 
+        if (args.length == 3 && args[0].equals("profiler") && args[1].equals("start"))
+            return null;
+
         return List.of();
     }
 

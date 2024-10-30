@@ -1,6 +1,7 @@
 package me.vovari2.distanceoptimization.managers;
 
 import me.vovari2.distanceoptimization.Config;
+import me.vovari2.distanceoptimization.DistanceOptimization;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
@@ -30,7 +31,7 @@ public class ChunkManager {
     }
     public static String getStringScore(Player profilingPlayer){
         PlayerScore playerScore = playerScores.get(profilingPlayer);
-        return " <gray>Info (%s): <gold>%s".formatted(playerScore.isEnableOptimization ? "<green>true</green>" : "<red>false</red>", playerScore.get());
+        return " <gray>Info (%s/%s): <gold>%s".formatted(playerScore.isEnableOptimization ? "<green>true</green>" : "<red>false</red>", DistanceOptimization.getInstance().IS_BAD_MSPT ? "<green>true</green>" : "<red>false</red>", playerScore.get());
     }
 
     private static final double AMOUNT_VALUES_FOR_AVERAGE = 20; // Number of last point values to calculate the average

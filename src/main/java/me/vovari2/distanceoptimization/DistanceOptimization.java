@@ -66,9 +66,9 @@ public final class DistanceOptimization extends JavaPlugin {
     public static World getWorld(String world){
         return instance.getServer().getWorld(world);
     }
-    public static Player getPlayer(String player){
+    public static Player getPlayer(String playerName){
         for (Player targetPlayer : instance.getServer().getOnlinePlayers())
-            if (targetPlayer.getName().equals(player))
+            if (targetPlayer.getName().equals(playerName))
                 return targetPlayer;
         return null;
     }
