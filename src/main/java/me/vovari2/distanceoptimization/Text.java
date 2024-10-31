@@ -21,10 +21,14 @@ public class Text {
     private static void declare(){
         Text texts = new Text();
         texts.put("command.help", toComponent("""
-                <gradient:#27374D:#526D82:#27374D><strikethrough>      </strikethrough> %s Helper v%s <strikethrough>      </strikethrough></gradient>
+                <gradient:dark_gray:gray:white><strikethrough>      </strikethrough> %s Helper v%s <strikethrough>      </strikethrough></gradient>
                 
-                <gradient:#526D82:#9DB2BF> - <hover:show_text:"<gray>View information about commands">/cho help</hover></gradient>
-                <gradient:#526D82:#9DB2BF> - <hover:show_text:"<gray>Reload plugin">/cho reload</hover></gradient>
+                <gradient:dark_gray:gray:white> - <hover:show_text:"<gray>View information about commands">/do help</hover></gradient>
+                <gradient:dark_gray:gray:white> - <hover:show_text:"<gray>Reload plugin">/do reload</hover></gradient>
+                <gradient:dark_gray:gray:white> - <hover:show_text:"<gray>Shows player information per second">/do profiler</hover></gradient>
+                   <gradient:dark_gray:gray:white><hover:show_text:"<gray>Launch profiler for a specific player">/do profiler start [player_name]</hover></gradient>
+                   <gradient:dark_gray:gray:white><hover:show_text:"<gray>Stopping the profiler">/do profiler stop</hover></gradient>
+                   <gradient:dark_gray:gray:white><hover:show_text:"<gray>Confirmation of profiler cancellation">/do profiler confirm</hover></gradient>
                 """.formatted(PLUGIN_NAME, VERSION)));
         texts.put("command.reload", toComponent("<gradient:#54B435:#82CD47>Plugin reloaded!</gradient>"));
         texts.put("command.profiler_start", toComponent("<green>Profiler for <yellow><%player%></yellow> started!"));
@@ -39,7 +43,7 @@ public class Text {
         texts.put("warning.nothing_to_confirm", toComponent("<red>Nothing to confirm!"));
         Text.object = texts;
     }
-    public static Component toComponent(String text){
+    private static Component toComponent(String text){
         return MiniMessage.miniMessage().deserialize(text);
     }
 
