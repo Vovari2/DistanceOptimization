@@ -10,7 +10,7 @@ commands:
 
 permissions:
   distance_optimization.*:
-    description: "Permission to perform all actions of the DistanceOptimization plugin, except \"distance_optimization.protect\""
+    description: "Permission to perform all actions of the DistanceOptimization plugin"
     default: false
 
   distance_optimization.help:

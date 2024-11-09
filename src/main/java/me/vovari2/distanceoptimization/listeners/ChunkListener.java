@@ -1,6 +1,6 @@
 package me.vovari2.distanceoptimization.listeners;
 
-import me.vovari2.distanceoptimization.managers.ChunkManager;
+import me.vovari2.distanceoptimization.managers.ChunksScoreManager;
 import org.bukkit.Chunk;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
@@ -25,7 +25,7 @@ public class ChunkListener implements Listener {
         if (player == null)
             return;
 
-        ChunkManager.add(player, event.isNewChunk() ? 2 : 1);
+        ChunksScoreManager.add(player, event.isNewChunk() ? 2 : 1);
     }
 
     private Player getNearPlayer(int x, int z, double maxDistance){

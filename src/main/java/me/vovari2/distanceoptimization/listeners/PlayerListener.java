@@ -2,7 +2,7 @@ package me.vovari2.distanceoptimization.listeners;
 
 import me.vovari2.distanceoptimization.Config;
 import me.vovari2.distanceoptimization.DistanceOptimization;
-import me.vovari2.distanceoptimization.managers.ChunkManager;
+import me.vovari2.distanceoptimization.managers.ChunksScoreManager;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -25,7 +25,7 @@ public class PlayerListener implements Listener {
             return;
 
         Player player = event.getPlayer();
-        if (instance.IS_BAD_MSPT && ChunkManager.canGetScore(player))
+        if (instance.IS_BAD_MSPT && ChunksScoreManager.hasPlayer(player) && ChunksScoreManager.isEnableOptimization(player))
             setOptimizeDistance(player);
         else setNormalDistance(player);
     }

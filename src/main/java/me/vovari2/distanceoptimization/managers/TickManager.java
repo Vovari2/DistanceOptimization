@@ -18,7 +18,7 @@ public class TickManager {
                 if (instance.IS_BAD_MSPT && Config.MSPT_LIMIT_DISABLE > mspt){
                     instance.IS_BAD_MSPT = false; return; }
 
-                ChunkManager.update();
+                ChunksScoreManager.update();
             }
         }.runTaskTimer(instance, 0, 20);
     }

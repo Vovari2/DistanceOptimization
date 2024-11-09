@@ -1,7 +1,8 @@
 package me.vovari2.distanceoptimization;
 
 import me.vovari2.distanceoptimization.exceptions.ComponentException;
-import me.vovari2.distanceoptimization.managers.ChunkManager;
+import me.vovari2.distanceoptimization.managers.ChunksScoreManager;
+import me.vovari2.distanceoptimization.utils.TextUtils;
 import net.kyori.adventure.text.TextReplacementConfig;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.command.CommandSender;
@@ -56,8 +57,14 @@ public class Profiler {
         task = new BukkitRunnable(){
             @Override
             public void run() {
-                listeningPlayer.sendMessage(MiniMessage.miniMessage().deserialize(ChunkManager.getStringScore(profilingPlayer)));
+                listeningPlayer.sendMessage(TextUtils.toComponent(getInfoMessageAboutScore()));
             }
         }.runTaskTimer(DistanceOptimization.getInstance(), 0, 20L);
+    }
+    private String getInfoMessageAboutScore(){
+        return " <gray>Info (%s/%s): <gold>%s".formatted(
+                TextUtils.toStringWithColors(ChunksScoreManager.isEnableOptimization(profilingPlayer)),
+                TextUtils.toStringWithColors(DistanceOptimization.getInstance().IS_BAD_MSPT),
+                ChunksScoreManager.getChunkScore(profilingPlayer));
     }
 }

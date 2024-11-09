@@ -1,14 +1,13 @@
 package me.vovari2.distanceoptimization.managers;
 
 import me.vovari2.distanceoptimization.Config;
-import me.vovari2.distanceoptimization.DistanceOptimization;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
-public class ChunkManager {
+public class ChunksScoreManager {
     public static void initialize(){
         playerScores = new HashMap<>();
     }
@@ -26,14 +25,19 @@ public class ChunkManager {
         for (PlayerScore playerScore : playerScores.values())
             playerScore.update();
     }
-    public static boolean canGetScore(Player player){
-        return playerScores.containsKey(player) && playerScores.get(player).isEnableOptimization;
+
+    public static boolean hasPlayer(Player player){
+        return playerScores.containsKey(player);
     }
-    public static String getStringScore(Player profilingPlayer){
-        PlayerScore playerScore = playerScores.get(profilingPlayer);
-        if (playerScore == null)
-            return " <gray>Info (%s/%s): <gold>%s".formatted("<red>false</red>", DistanceOptimization.getInstance().IS_BAD_MSPT ? "<green>true</green>" : "<red>false</red>", 0);
-        return " <gray>Info (%s/%s): <gold>%s".formatted(playerScore.isEnableOptimization ? "<green>true</green>" : "<red>false</red>", DistanceOptimization.getInstance().IS_BAD_MSPT ? "<green>true</green>" : "<red>false</red>", playerScore.get());
+    public static boolean isEnableOptimization(Player player){
+        if (hasPlayer(player))
+            return false;
+        return playerScores.get(player).isEnableOptimization;
+    }
+    public static double getChunkScore(Player player){
+        if (hasPlayer(player))
+            return 0;
+        return playerScores.get(player).get();
     }
 
     private static final double AMOUNT_VALUES_FOR_AVERAGE = 20; // Number of last point values to calculate the average
